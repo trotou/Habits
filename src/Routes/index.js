@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "../components/Home";
 import Usuarios from "../components/Usuarios";
+import RegisterPage from "../pages/RegisterPage";
 
 const Routes = () => {
   return (
@@ -12,6 +13,9 @@ const Routes = () => {
         </Route>
         <Route path="/user">
           <Usuarios />
+        </Route>
+        <Route path="/register">
+          <RegisterPage />
         </Route>
       </Switch>
     </AnimatePresence>
