@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
       setUserName(res.data.username);
       setGroup(res.data.group);
     });
-  }, []);
+  }, [userName]);
 
   const handleChangeUserName = (choosename) => {
     api
@@ -34,14 +34,11 @@ export const UserProvider = ({ children }) => {
       const token = JSON.stringify(result.data.access);
       const id = JSON.stringify(jwt_decode(token).user_id);
 
-      api.post("/groups/26/subscribe/", {
-        Authorization: `Bearer ${result.data.access}`,
-      });
-
       localStorage.setItem("token", token);
       localStorage.setItem("id", id);
       localStorage.setItem("groupId", JSON.stringify(26));
       reset();
+      window.location.reload();
       history.push("/home");
     };
     fetchData().catch((e) => setError(true));
